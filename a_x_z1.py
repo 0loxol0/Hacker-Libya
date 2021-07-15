@@ -628,8 +628,6 @@ def generate(text):
 					results.append("20032003")
 					results.append("20042004")
 				elif "us" in ct:
-					results.append("1234512345")
-					results.append("1020304050")
 					results.append("1122334455")
 					results.append("112233445566")
 					results.append("1234554321")
