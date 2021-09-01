@@ -36,7 +36,7 @@ $ git clone https://github.com/Ahmedalzwage/Hacker-Libya
 
 ## ⇨  Run Script
 
-$ cd AXZ
+$ cd Hacker-Libya
 
 $ python a_x_z1.py  
 
